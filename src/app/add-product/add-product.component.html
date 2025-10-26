@@ -1,0 +1,110 @@
+<p class="d-inline-flex gap-1">
+  <button
+    class="btn btn-primary"
+    type="button"
+    data-bs-toggle="collapse"
+    data-bs-target="#collapseExample"
+    aria-expanded="false"
+    aria-controls="collapseExample"
+  >
+    Add Products
+  </button>
+</p>
+<div class="collapse" id="collapseExample">
+  <div class="card card-body">
+    <!-- <form #productForm="ngForm" (ngSubmit)="onSubmit(productForm)">
+      <div class="mb-3">
+        <label for="exampleInputName1" class="form-label">Name</label>
+        <input
+          name="name"
+          type="text"
+          ngModel
+          #name="ngModel"
+          required
+          class="form-control"
+          id="exampleInputName1"
+          aria-describedby="emailHelp"
+        />
+        <p *ngIf="name.invalid && (submitted || name.touched) " class="text-danger">Name is compulsory</p>
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputDescription1" class="form-label"
+          >Description</label
+        >
+        <input
+          name="description"
+          type="text"
+          ngModel
+          #description="ngModel"
+          class="form-control"
+          id="exampleInputDescription1"
+        />
+      </div>
+
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Email</label>
+        <input
+          name="email"
+          type="text"
+          ngModel
+          #email="ngModel"
+          class="form-control"
+          id="exampleInputEmail1"
+        />
+        <p
+          *ngIf="email.invalid && submitted && email.errors?.['required']"
+          class="text-danger"
+        >
+          Email is compulsory
+        </p>
+        <p
+          *ngIf="email.invalid && submitted && email.errors?.['email']"
+          class="text-danger"
+        >
+          Email is compulsory
+        </p>
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPrice1" class="form-label">Price</label>
+        <input
+          name="price"
+          type="number"
+          class="form-control"
+          ngModel
+          #price="ngModel"
+          id="exampleInputPrice1"
+        />
+        <p *ngIf="price.invalid && submitted" class="text-danger">
+          Price is compulsory
+        </p>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form> -->
+    <form [formGroup]="productForm" (ngSubmit)="onSubmit()" >
+<div class="mb-3">
+<label for="exampleInputEmail1" class="form-label">Name*</label>
+<input formControlName="name" type="text" class="form-control" id="exampleInputName1" aria-describedby="nameHelp">
+<p *ngIf="productForm.get('name')?.errors?.['required'] && (submitted || productForm.get('name')?.touched)" class="text-danger">Name is compulsory</p>
+<p *ngIf="productForm.get('name')?.errors?.['minlength'] && (submitted || productForm.get('name')?.touched)" class="text-danger">Minlength is compulsory</p>
+<p *ngIf="productForm.get('name')?.errors?.['notAllowed'] && (submitted || productForm.get('name')?.touched)" class="text-danger">Name not allowed : {{productForm.get('name')?.errors?.['notAllowed']}}</p>
+
+</div>
+<div class="mb-3">
+<label for="exampleInputPassword1" class="form-label">Description</label>
+<input formControlName="description" type="text" class="form-control" id="exampleInputPassword1">
+</div>
+<div>
+<label for="">Email</label>
+<input class="form-control" type="email" name="email" ngModel #email="ngModel">
+
+</div>
+<div class="mb-3 ">
+<label for="exampleCheck1">Price*</label>
+<input required formControlName="price" type="number" class="form-control" id="exampleCheck1">
+</div>
+
+<button type="submit" class="btn btn-primary">Submit</button>
+
+</form>
+  </div>
+</div>

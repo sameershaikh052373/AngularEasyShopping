@@ -1,0 +1,16 @@
+<div class="product-container">
+  <button class="next-btn" (click)="onClickNext()">Next ➜</button>
+
+  <div class="product-image">
+    <span class="costly-badge" *ngIf="costly">Costly 💸</span>
+    <img [src]="productData.img" [alt]="productData.name" />
+  </div>
+
+  <div class="product-details">
+    <h1 class="product-name">{{ productData.name }}</h1>
+    <h2 class="product-title">{{ productData.name }}</h2>
+    <p class="product-price">${{ productData.price }}</p>
+    <p class="product-description">{{ productData.description }}</p>
+    <button class="buy-btn">Add to Cart</button>
+  </div>
+</div>
